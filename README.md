@@ -21,6 +21,16 @@ Add `-g` to install into your home folder (`~/.claude/skills`) so the skills are
 npx skills add GBS-2805/freebuff-ultimate-skills --skill "*" -a claude-code -g -y
 ```
 
+### Pin to a version
+
+Add `@<tag>` to install one exact release, so the skills cannot change under you when the repo moves on:
+
+```bash
+npx skills add GBS-2805/freebuff-ultimate-skills@v1.0.0 --skill "*" -a claude-code -g -y
+```
+
+Swap `v1.0.0` for any later tag, or for a commit SHA to pin an exact snapshot.
+
 Install one skill the same way:
 
 ```bash
