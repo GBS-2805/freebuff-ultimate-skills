@@ -26,10 +26,10 @@ npx skills add GBS-2805/freebuff-ultimate-skills --skill "*" -a claude-code -g -
 Add `@<tag>` to install one exact release, so the skills cannot change under you when the repo moves on:
 
 ```bash
-npx skills add GBS-2805/freebuff-ultimate-skills@v1.0.0 --skill "*" -a claude-code -g -y
+npx skills add GBS-2805/freebuff-ultimate-skills@v1.0.1 --skill "*" -a claude-code -g -y
 ```
 
-Swap `v1.0.0` for any later tag, or for a commit SHA to pin an exact snapshot.
+Swap `v1.0.1` for any later tag, or for a commit SHA to pin an exact snapshot.
 
 Install one skill the same way:
 
