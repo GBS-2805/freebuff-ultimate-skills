@@ -4,20 +4,27 @@ A practical collection of agent skills for creative workflows, 3D printing, codi
 
 ## Install
 
-Every skill, for Claude Code, installed for your whole user account so they work in every project:
+Every skill, for Claude Code:
+
+```bash
+npx skills add GBS-2805/freebuff-ultimate-skills --skill "*" -a claude-code -y
+```
+
+- `-a claude-code` targets Claude Code. Use `-a "*"` to install for every agent the CLI detects.
+- `-y` skips the confirmation prompts.
+
+### User-level install
+
+Add `-g` to install into your home folder (`~/.claude/skills`) so the skills are available in every project, not just the folder you run the command from:
 
 ```bash
 npx skills add GBS-2805/freebuff-ultimate-skills --skill "*" -a claude-code -g -y
 ```
 
-- `-a claude-code` targets Claude Code. Use `-a "*"` to install for every agent the CLI detects.
-- `-g` is the user-level install: skills go to your home folder (`~/.claude/skills`) and are available in every project. Drop `-g` to install them into only the project you are in.
-- `-y` skips the confirmation prompts.
-
 Install one skill the same way:
 
 ```bash
-npx skills add GBS-2805/freebuff-ultimate-skills --skill blender-product-rendering -a claude-code -g -y
+npx skills add GBS-2805/freebuff-ultimate-skills --skill blender-product-rendering -a claude-code -y
 ```
 
 ## Included skills
