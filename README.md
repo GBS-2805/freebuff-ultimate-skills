@@ -1,76 +1,46 @@
 # Freebuff Ultimate Skills
 
-A practical collection of agent skills for creative workflows, 3D printing, coding, research, and troubleshooting.
+This repository no longer ships its own skills.
+
+The eight it used to contain were unsourced prose: no scripts, no reference files, no tests, and no record of anyone verifying the printer or slicer settings in them. They have been removed rather than dressed up. What follows points at packs that do have that evidence.
+
+## What to install
+
+| You need | Pack | Why that one |
+| --- | --- | --- |
+| Reviewing UI, accessibility | `vercel-labs/agent-skills` → `web-design-guidelines` | Vercel's own; rules pinned by commit SHA and checksum; ~900k installs |
+| Designing a new interface | `anthropics/skills` → `frontend-design` | Names the tells that make generated pages obvious, then avoids them |
+| Posters, artwork, print design | `anthropics/skills` → `canvas-design` | Two-phase design process; ships 38 licensed fonts |
+| Blender work | `RobLe3/cc-blender-skill` | 30 skills, each with references, scripts and trigger tests; keeps its failed renders as evidence |
+| OrcaSlicer | `OrcaSlicer/orcaslicer-mcp-skills` | From the OrcaSlicer organisation; 20 KB skill plus a 120 KB action reference |
+| Klipper printers | `santiagomoneta/3d-printing-skills` | Real shell scripts for status, G-code and config upload. One developer — a starting point, not authority |
+| PDFs, Word, Excel, PowerPoint | `anthropics/skills` → `pdf`, `docx`, `xlsx`, `pptx` | Official, and they bundle working scripts |
+| Debugging, planning code | `obra/superpowers`, `mattpocock/skills` | Widely used engineering workflows |
+| Security review | `trailofbits/skills` | Maintained by a security firm |
 
 ## Install
 
-Every skill, for Claude Code:
-
 ```bash
-npx skills add GBS-2805/freebuff-ultimate-skills --skill "*" -a claude-code -y
+npx skills add vercel-labs/agent-skills --skill web-design-guidelines -a claude-code -g -y
+npx skills add anthropics/skills --skill frontend-design -a claude-code -g -y
 ```
 
-- `-a claude-code` targets Claude Code. Use `-a "*"` to install for every agent the CLI detects.
-- `-y` skips the confirmation prompts.
+`-g` installs for your whole user account (`~/.claude/skills`) so the skill works in every project. Drop it to install into only the current folder. `-y` skips the prompts.
 
-### User-level install
+Swap the repo and `--skill` name for anything in the table above. The installer also prints independent security checks (Gen Agent Trust Hub, Socket, Snyk) before it installs.
 
-Add `-g` to install into your home folder (`~/.claude/skills`) so the skills are available in every project, not just the folder you run the command from:
+## The 3D printing gap
 
-```bash
-npx skills add GBS-2805/freebuff-ultimate-skills --skill "*" -a claude-code -g -y
-```
+There is no credible Creality K1 SE skill, from anyone. The nearest options are the official OrcaSlicer pack and a one-developer Klipper pack, both small.
 
-### Pin to a version
+Generic advice is not worth pretending otherwise. What would be worth trusting is your own log: filament, temperatures, the one setting you changed, and what actually happened. That record is the only K1 SE skill that will ever be better than guesswork.
 
-Add `@<tag>` to install one exact release, so the skills cannot change under you when the repo moves on:
+## Old versions
+
+Tags `v1.0.0` and `v1.0.1` still contain the eight original skills and are still installable from the tag:
 
 ```bash
 npx skills add GBS-2805/freebuff-ultimate-skills@v1.0.1 --skill "*" -a claude-code -g -y
 ```
 
-Swap `v1.0.1` for any later tag, or for a commit SHA to pin an exact snapshot.
-
-Install one skill the same way:
-
-```bash
-npx skills add GBS-2805/freebuff-ultimate-skills --skill blender-product-rendering -a claude-code -y
-```
-
-## Included skills
-
-- `blender-product-rendering`
-  Use when you need a polished product shot in Blender (especially keyboards and keycaps), or when a scene has to move between machines without losing UVs, materials or HDRIs.
-
-- `creality-k1-se`
-  Use when a K1 SE print comes out wrong: rough first layers, under-extrusion, stringing, or supports welded to the model.
-
-- `orcaslicer-tuning`
-  Use when OrcaSlicer output is unreliable and you need to tune a profile in a sensible order instead of changing several settings at once.
-
-- `ui-design`
-  Use when planning a screen or flow, critiquing an existing interface, or checking responsiveness, empty/error states and accessibility.
-
-- `coding-workflow`
-  Use before changing code in an unfamiliar repository, or when a fix needs scoped edits and honest test reporting.
-
-- `research-and-writing`
-  Use when a claim needs credible sources and citations, or when the writing must separate sourced fact from interpretation.
-
-- `github-workflow`
-  Use when committing, branching, opening a pull request, or working out what actually reached GitHub.
-
-- `technical-troubleshooting`
-  Use when something breaks and you need to isolate the cause without risking data, hardware or working settings.
-
-Each skill is a folder containing `SKILL.md`. Skills provide workflows, not proof an action was completed.
-
-## Layout
-
-```text
-skills/<skill-name>/SKILL.md
-AGENTS.md
-LICENSE
-```
-
-Check your agent's documentation for supported skill discovery and installation formats.
+They are unchanged and were never tested or sourced. Installing from `main` no longer yields any skills, by design.
